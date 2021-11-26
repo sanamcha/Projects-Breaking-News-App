@@ -15,7 +15,7 @@ def connect_db(app):
 
 
 class Comment(db.Model):
-    __tablename__ = 'user_comments'
+    __tablename__ = 'comments'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     text = db.Column(db.Text, nullable=False)
@@ -23,10 +23,10 @@ class Comment(db.Model):
     posted_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow())
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    post_id = db.Column(db.Integer, db.ForeignKey('post_id'))
+    
 
     user = db.relationship('User', backref="comments")
-    post = db.relationship('Post', backref="comments")
+    
 
 
 class User(db.Model):
