@@ -39,3 +39,15 @@ Simple app, navbar at the top with sign up and login button. Also users can logi
 What features make your site more than CRUD? Do you have any stretch goals?
 
 Adding with signup/login/logout features with adding comments, like and share button for news content.
+
+
+What will be the user flow looks like?
+
+-Landing Page
+  -Top News story/search news
+  -Register
+  -Login
+    -Views News with different catogories/search news
+    -Post new News/delete post
+    -Comments on different News/delete comments
+     
