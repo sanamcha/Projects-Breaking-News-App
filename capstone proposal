@@ -1,0 +1,22 @@
+Breaking News App:
+- Views latest top-highlight news.
+
+
+- Users can register and login to post new news and comments.
+
+
+-  Show the latest news with different categories like entertainment, finance, education, stocks, international news, covid data, etc. 
+
+
+
+- Shows a weather icon in the navbar, we can click and view current weather data in different cities, 
+and also can search and add weather of the selected city.
+
+
+- Api  for news: - https://newsapi.org/v2/top-headlines?country=us&apiKey={API KEY}
+
+
+- Api for weather: - http://api.openweathermap.org/data/2.5/forecast?id=524901&appid={API key}
+
+
+-Api for covid-data:- https://covid-19-statistics.p.rapidapi.com

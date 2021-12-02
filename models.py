@@ -15,6 +15,7 @@ def connect_db(app):
 
 
 
+
 class User(db.Model):
 
     __tablename__ = 'users'
@@ -26,13 +27,19 @@ class User(db.Model):
     def posts(self):
         return Post.query.order_by(Post.timestamp.desc())
 
+    username = db.Column(db.Text, nullable=False,  unique=True)
+
+    password = db.Column(db.Text, nullable=False)
+
     @classmethod
     def register(cls, username, pwd):
         """Register user w/hashed password & return user."""
 
         hashed = bcrypt.generate_password_hash(pwd)
+
         hashed_utf8 = hashed.decode("utf8")
- 
+
+       
         return cls(username=username, password=hashed_utf8)
 
     @classmethod
