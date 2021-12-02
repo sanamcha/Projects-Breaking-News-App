@@ -5,14 +5,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
  
-  <style>
-  .img {
-    height: 200px;
-    background: #aaa;
-    
-  }
-  </style>
 </head>
 <body>
 
@@ -92,15 +86,38 @@
     {% block content %}{% endblock %}
 
 
-<div class="jumbotron text-center" style="margin-bottom:0">
-    <div class="col-sm-4">
-        <h2>About Me</h2>
-        <h5>Photo of me:</h5>
-        <div class="img"> 
+<div>
+    <div>
+        <h2>Meet the Developer</h2>
+        <h4>Sanam Maharjan</h4>
+        <h5>Software Engineer</h5>
+        
           <img src="/static/images/sanam.jpg" height="200px" width="200px">
-        </div>
-        <p>I'a Sanam, currently students of Software Engineering from SpringBoard.</p>
+        
+        <p>Hi, thanks for checking my site, I am a software engineer from Hayward, Bay area. Please feel free to reach me out via email at mhr.sanam@gmail.com</p>
   
+</div>
+
+<div>
+  <p>Follow me on:</p>
+  <ul class="socials my-1 display-7 list-inline fs-4">
+      <li class="list-inline-item mx-2">
+          <a href="https://www.linkedin.com/in/sanam-maharjan-43945756/" target="_blank" rel="noopener noreferrer"
+              class="link-primary"><i class="fab fa-linkedin"></i></a>
+      </li>
+      <li class="list-inline-item mx-2">
+          <a href="https://twitter.com/san_mhr" target="_blank" rel="noopener noreferrer"
+              class="link-primary"><i class="fab fa-twitter"></i></a>
+      </li>
+      <li class="list-inline-item mx-2">
+          <a href="https://github.com/sanamcha" target="_blank" rel="noopener noreferrer"
+              class="link-primary"><i class="fab fa-github-square"></i></a>
+      </li>
+      <li class="list-inline-item mx-2">
+          <a href="mailto:mhr.sanam@gmail.com" target="_blank" rel="noopener noreferrer"
+              class="link-primary"><i class="fas fa-envelope-open-text"></i></a>
+      </li>
+  </ul>
 </div>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
