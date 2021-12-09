@@ -1,0 +1,44 @@
+{% extends 'base.html'  %}
+{% block title %}  {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <h1>
+        List of all News..
+    </h1>
+    <div>
+        <a class="btn btn-primary" href="/post-news/add">Add Current News... </a>
+    </div>
+
+    
+
+    <div class="row">
+        
+        {% for post in posts %}
+        <div class="col-10">
+            <img src="{{post.image_url}}" width='600px', height='400px'>
+            <h3>{{post.author}}</h3>
+            <h4>{{post.title}}</h4>
+            <p>{{post.description}}</p>
+         <form>
+            <button formaction="/post-news/{{post.id}}" class="btn btn-success"> Comment</button>
+
+            <button formaction="/post-news/{{post.id}}/update" class="btn btn-info">Update</button>
+           
+            <button formmethod="POST"
+            formaction="post-news/{{post.id}}/delete"
+            class="btn btn-danger">Delete
+            </button>
+        </form>
+
+        </div>
+           
+        
+        {%  endfor %}
+
+        
+
+    
+
+    {% endblock %}

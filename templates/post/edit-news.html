@@ -1,0 +1,41 @@
+{% extends 'base.html'  %}
+{% block title %}Edit_News_Page  {% endblock %}
+
+{% block content %}
+
+<h1>Edit News Page</h1>
+    
+
+    <form method="POST" action="/post-news/{{post.id}}/update">
+        
+        {{ form.hidden_tag() }}
+
+        {% for field in form.errors %}
+        <div class="alert alert-danger">{{ field }}:
+          <ul>{% for error in form.errors[field] %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+    
+      {% endfor %}
+    
+        {% for field in form if field.widget.input_type != 'hidden'%}
+    
+    <div class='form-group'>
+        {{ field.label(class="col-sm-2 col-form-label") }}
+        {{ field (class="form-control")}}
+    
+ 
+    
+    </div> 
+         {% endfor %} 
+      
+    <button class="btn btn-primary" type="submit">Update</button>
+    </form>
+    <button class="btn btn-info"><a href="/post-news">Go Back</a></button>
+
+    </div>
+
+    
+    {% endblock %}

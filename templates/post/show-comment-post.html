@@ -1,0 +1,42 @@
+{% extends "base.html"%}
+
+{% block title %}  {% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <img src=" {{ post.image_url }}" width="600px" height="500px">
+    <h3> {{ post.author}}</h3>
+    <h3> {{ post.title}}</h3>
+    <h3>{{post.description}}</h3>
+
+<div>
+    <div>
+        <h1>List of Comments..</h1>
+        {% for comment in comments %}
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-info">
+        
+            </h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{comment.friendly_date}}</h6>
+            <p class="card-text">
+              {{comment.text}} 
+              
+            </p>
+            <form>
+              
+              <button formaction="/post-news/{{comment.id}}/delete" formmethod="POST" class="btn btn-danger">Delete</button>
+            </form>
+      
+          </div>
+        </div>
+      
+ 
+        {% endfor %}
+
+        <a href="/post-news/{{post.id}}/comment"><button class="btn btn-success">Add comments...</button></a>
+        <a href="/post-news"><button class="btn btn-secondary">Go Back..</button></a>
+
+
+{% endblock %}

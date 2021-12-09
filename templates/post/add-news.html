@@ -1,0 +1,35 @@
+{% extends 'base.html'  %}
+{% block title %}  {% endblock %}
+
+{% block content %}
+
+
+    <h1>Add News</h1>
+    
+    <form  method="POST" >
+
+        {{ form.hidden_tag() }}
+
+        {% for field in form if field.widget.input_type != 'hidden'%}
+
+    <div class='form-group'>
+        {{ field.label(class="col-sm-2 col-form-label") }}
+        {{ field (class="form-control")}}
+
+    <p>
+        {% if field.errors %}
+        {% for error in field.errors %}
+	        <b class="text-danger">{{ error }}</b>
+        {% endfor %}
+        {% endif %}
+    </p>
+
+    </div> 
+
+         {% endfor %} 
+        <button type="submit" class="btn btn-primary">Add News</button>
+        
+    </form>
+    <a href="/post-news">Go Back..</a>
+    
+    {% endblock %}

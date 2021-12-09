@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, TextAreaField
+from wtforms import StringField, PasswordField, TextAreaField, SubmitField
 from wtforms.validators import InputRequired, Optional, URL
 
 
@@ -8,14 +8,16 @@ class UserForm(FlaskForm):
     password = PasswordField("Password", validators=[InputRequired()])
 
 class PostForm(FlaskForm):
-    post = StringField('posts', validators=[InputRequired()])
+    author = StringField('author', validators=[InputRequired()])
     title = StringField('title', validators=[InputRequired()])
+    image_url = StringField("Image URL", validators=[Optional(), URL()])
+    description = TextAreaField("Description", validators=[Optional()])
 
 class CommentForm(FlaskForm):
-    comment = StringField('posts', validators=[InputRequired()])
-
-    # text = StringField("Comment Text", validators=[InputRequired()])
-    # posted_at = StringField("Post Date", validators=[InputRequired()])
+   
+    text = StringField("Comment Text", validators=[InputRequired()])
+    submit = SubmitField("Post")
+    posted_at = StringField("Post Date")
     
 
 
@@ -24,7 +26,6 @@ class AddNewsForm(FlaskForm):
     image_url = StringField("Image URL", validators=[Optional(), URL()])
     author = StringField("Author", validators=[InputRequired()])
     title = StringField("Title", validators=[InputRequired()])
-    
     
     description = TextAreaField("Description", validators=[Optional()])
 
@@ -36,8 +37,14 @@ class EditNewsForm(FlaskForm):
     """Form for editing an existing news."""
     
     image_url = StringField("Image URL", validators=[Optional(), URL()])
+    author = StringField("Author", validators=[Optional()])
+    title = StringField("Title", validators=[Optional()])
 
     description = TextAreaField("Description", validators=[Optional()])
+
+
+class DeleteForm(FlaskForm):
+     """For delete posted news..."""
 
     
 

@@ -21,15 +21,11 @@ class User(db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    username = db.Column(db.Text, nullable=False,  unique=True)
-    password = db.Column(db.Text, nullable=False)
+    username = db.Column(db.String, nullable=False,  unique=True)
+    password = db.Column(db.String, nullable=False)
+    # post = db.relationship("Post", backref="users", cascade="all,delete")
 
-    def posts(self):
-        return Post.query.order_by(Post.timestamp.desc())
 
-    username = db.Column(db.Text, nullable=False,  unique=True)
-
-    password = db.Column(db.Text, nullable=False)
 
     @classmethod
     def register(cls, username, pwd):
@@ -67,34 +63,24 @@ class Post(db.Model):
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     title = db.Column(db.Text, nullable=False)
-    image_url = db.Column(db.Text, nullable=False, 
-                    default = DEFAULT_IMAGE)
+    image_url = db.Column(db.Text, nullable=False,default = DEFAULT_IMAGE)
     author = db.Column(db.Text)
-    published_at = db.Column(db.DateTime, nullable=False,default=datetime.utcnow())
+    published_at = db.Column(db.DateTime, nullable=False,default=datetime.now())
     description = db.Column(db.Text, nullable=False)
     
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', backref="posts")
-    # comments =db.relationship('Comments', backref="posts")
+    user = db.relationship('User', backref="posts", cascade="all,delete")
+    comments = db.relationship('Comment', backref='article', cascade='all, delete')
+
+    @property
+    def friendly_date(self):
+        """Return nicely-formatted date."""
+
+        return self.published_at.strftime("%a %b %-d  %Y, %-I:%M %p")
    
     def __repr__(self):
         return f"<Post {self.id} {self.title} {self.image_url}{self.author} {self.published_at} {self.description} {self.user_id} >"
 
-  
-
-
-    def serialize(self):
-        """To serialize news"""
-
-        return {
-            "id": self.id,
-            "title": self.title,
-            "image": self.image,
-            "author": self.author,
-            "published_at":self.published_at,
-            "description": self.description,
-            
-        }
 
 
 class Comment(db.Model):
@@ -103,16 +89,24 @@ class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     text = db.Column(db.String(100), nullable=False)
 
-    timestamp = db.Column(db.DateTime, nullable=False,default=datetime.utcnow())
+    posted_at = db.Column(db.DateTime, nullable=False,default=datetime.now())
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
-
-    users = db.relationship('User', backref="comments")
+    user = db.relationship('User', backref="comments")
+    # post = db.relationship('Post', backref="comments")
     
+    @property
+    def friendly_date(self):
+        """Return nicely-formatted date."""
+
+        return self.posted_at.strftime("%a %b %-d  %Y, %-I:%M %p")
+
 
     def __repr__(self):
-        return f"<Comment {self.id} {self.text} {self.timestamp} {self.user_id} {self.post_id} >"
+
+        return f"Comment('{self.text}','{self.posted_at}')"
+
 
 # for Weather - data
 
@@ -122,5 +116,5 @@ class City(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable = True)
-    user_id = db.Column(db.Integer, db.ForeignKey('weathers.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # user = db.relationship('User', backref="weathers")
