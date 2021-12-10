@@ -17,7 +17,7 @@ import os
 app = Flask(__name__)
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgresql:///breaking_news") 
+app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgres:///breaking_news") 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
