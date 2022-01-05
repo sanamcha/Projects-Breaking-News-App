@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
+  <link rel="stylesheet" href="/static/style.css">
  
 </head>
 <body>
@@ -87,39 +88,42 @@
     {% block content %}{% endblock %}
 
 
-<div>
-    <div>
-        <h2>Meet the Developer</h2>
-        <h4>Sanam Maharjan</h4>
-        <h5>Software Engineer</h5>
-        
-          <img src="/static/images/sanam.jpg" height="200px" width="200px">
+<div style="text-align:center">
+    <div class="card">
+        <h2>Meet the Developer</h2>  
+          <img src="/static/images/sanam.jpg" style="width:100%">
+        <div>
+          <h4 class="title">Sanam Maharjan</h4>
+          <h5>Software Engineer</h5>
         
         <p>Hi, thanks for checking my site, I am a software engineer from Hayward, Bay area. Please feel free to reach me out via email at mhr.sanam@gmail.com</p>
-  
-</div>
+      </div>
 
-<div>
-  <p>Follow me on:</p>
-  <ul class="socials my-1 display-7 list-inline fs-4">
-      <li class="list-inline-item mx-2">
-          <a href="https://www.linkedin.com/in/sanam-maharjan-43945756/" target="_blank" rel="noopener noreferrer"
-              class="link-primary"><i class="fab fa-linkedin"></i></a>
-      </li>
-      <li class="list-inline-item mx-2">
-          <a href="https://twitter.com/san_mhr" target="_blank" rel="noopener noreferrer"
-              class="link-primary"><i class="fab fa-twitter"></i></a>
-      </li>
-      <li class="list-inline-item mx-2">
-          <a href="https://github.com/sanamcha" target="_blank" rel="noopener noreferrer"
-              class="link-primary"><i class="fab fa-github-square"></i></a>
-      </li>
-      <li class="list-inline-item mx-2">
-          <a href="mailto:mhr.sanam@gmail.com" target="_blank" rel="noopener noreferrer"
-              class="link-primary"><i class="fas fa-envelope-open-text"></i></a>
-      </li>
-  </ul>
-</div>
+      <div style="margin: 24px 0;">
+        <p>Follow me on:</p>
+        <ul class="socials my-1 display-7 list-inline fs-4">
+            <li class="list-inline-item mx-2">
+                <a href="https://www.linkedin.com/in/sanam-maharjan-43945756/" target="_blank" rel="noopener noreferrer"
+                    class="link-primary"><i class="fab fa-linkedin"></i></a>
+            </li>
+            <li class="list-inline-item mx-2">
+                <a href="https://twitter.com/san_mhr" target="_blank" rel="noopener noreferrer"
+                    class="link-primary"><i class="fab fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item mx-2">
+                <a href="https://github.com/sanamcha" target="_blank" rel="noopener noreferrer"
+                    class="link-primary"><i class="fab fa-github-square"></i></a>
+            </li>
+            <li class="list-inline-item mx-2">
+                <a href="mailto:mhr.sanam@gmail.com" target="_blank" rel="noopener noreferrer"
+                    class="link-primary"><i class="fas fa-envelope-open-text"></i></a>
+            </li>
+        </ul>
+      </div>
+  
+    </div>
+
+
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
