@@ -9,7 +9,7 @@ import requests
 from secrets import API_SECRET_KEY
 
 from weathers import get_weather, url_weather, weather_city
-from news import  get_general_news, get_technology_news, get_health_news, get_business_news, get_entertainment_news, get_sports_news, get_science_news
+from news import  get_general_news, get_technology_news, get_health_news, get_business_news, get_entertainment_news, get_sports_news, get_science_news,get_bitcoin_news, get_jobs_news, get_travel_news, get_animals_news, get_military_news, get_fitness_news, get_pets_news, get_beauty_news, get_tech_news, get_relationships_news, get_stocks_news, get_weather_news
 import os
 
 
@@ -24,10 +24,10 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','12345secretkey67890')
 
-app.config['DEBUG'] = True
+# app.config['DEBUG'] = True
 
 
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 connect_db(app)
 db.create_all()
 
@@ -40,7 +40,7 @@ def page_not_found(e):
     return render_template('404.html'), 404
 
 @app.route('/')
-def home_page():
+def index_page():
     """The home page"""
     url =f'https://newsapi.org/v2/top-headlines?country=us&apiKey={API_SECRET_KEY}'
     
@@ -96,7 +96,79 @@ def business_news():
     weather=get_weather()
     return render_template("news.html", articles=business_articles, weather=weather)
 
+@app.route('/bitcoin')
+def bitcoin_news():
+    bitcoin_articles = get_bitcoin_news()
+    weather=get_weather()
+    return render_template("news.html", articles=bitcoin_articles, weather=weather)
 
+@app.route('/jobs')
+def jobs_news():
+    jobs_articles = get_jobs_news()
+    weather=get_weather()
+    return render_template("news.html", articles=jobs_articles, weather=weather)
+
+@app.route('/travel')
+def travel_news():
+    travel_articles = get_travel_news()
+    weather=get_weather()
+    return render_template("news.html", articles=travel_articles, weather=weather)
+
+@app.route('/stocks')
+def stocks_news():
+    stocks_articles = get_stocks_news()
+    weather=get_weather()
+    return render_template("news.html", articles=stocks_articles, weather=weather)
+
+@app.route('/fitness')
+def fitness_news():
+    fitness_articles = get_fitness_news()
+    weather=get_weather()
+    return render_template("news.html", articles=fitness_articles, weather=weather)
+
+@app.route('/pets')
+def pets_news():
+    pets_articles = get_pets_news()
+    weather=get_weather()
+    return render_template("news.html", articles=pets_articles, weather=weather)
+
+@app.route('/military')
+def military_news():
+    military_articles = get_military_news()
+    weather=get_weather()
+    return render_template("news.html", articles=military_articles, weather=weather)
+
+@app.route('/tech')
+def tech_news():
+    tech_articles = get_tech_news()
+    weather=get_weather()
+    return render_template("news.html", articles=tech_articles, weather=weather)
+
+@app.route('/animals')
+def animals_news():
+    animals_articles = get_animals_news()
+    weather=get_weather()
+    return render_template("news.html", articles=animals_articles, weather=weather)
+
+@app.route('/relationships')
+def relationships_news():
+    relationships_articles = get_relationships_news()
+    weather=get_weather()
+    return render_template("news.html", articles=relationships_articles, weather=weather)
+
+@app.route('/beauty')
+def beauty_news():
+    beauty_articles = get_beauty_news()
+    weather=get_weather()
+    return render_template("news.html", articles=beauty_articles, weather=weather)
+
+@app.route('/weather')
+def weather_news():
+    weather_articles = get_weather_news()
+    weather=get_weather()
+    return render_template("news.html", articles=weather_articles, weather=weather)
+
+# #########   search page ############
 
 @app.route('/search', methods=['POST', 'GET'])
 def search():
@@ -141,6 +213,8 @@ def covid_news():
     return render_template ("/covid-news.html", article=article, weather=weather)
 
 
+
+
 #   ###############  for user register  ###############
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -168,6 +242,8 @@ def register_user():
     return render_template('register.html', form=form, weather=weather)
 
 
+
+
 ################ for user login###############
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -188,6 +264,8 @@ def login_user():
             form.username.errors = ['Invalid username/password.']
 
     return render_template('login.html', form=form, weather=weather)
+
+
 
 
 ######## for logout ###############
