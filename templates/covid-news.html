@@ -3,6 +3,34 @@
 {% block content %}
 
 
+
+<center><div>
+  <section>
+
+    <div class="total-cases block">
+      <h3>Total Cases:</h3>
+        <h4 class="numbers"> 0</h4>
+    </div>
+
+    <div class="active-cases block">
+      <h3>Active Cases:</h3>
+        <h4 class="numbers">  0</h4>
+    </div>
+
+    <div class="death-cases block">
+      <h3>Deaths:</h3>
+        <h4 class="numbers"> 0</h4>
+    </div>
+
+    <div class="recovered-cases block">
+        <h3>Recovered Cases:</h3>
+
+        <h4 class="numbers"> 0</h4>
+
+    </div>
+</div>
+</center>
+
 <div class="container">
     <div class="col-sm-12">
         {% for article in article.articles %}
@@ -17,7 +45,6 @@
       
       <!-- <a href="/comments"><button class="btn btn-info">Comments</button></a> -->
 
-      
       <hr>
    
       {% endfor %}
@@ -25,4 +52,6 @@
    
     </div>
 
+
+    <script src="static/covidData.js"></script>   
     {% endblock %}
