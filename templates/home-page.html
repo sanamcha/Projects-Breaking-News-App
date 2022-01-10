@@ -15,11 +15,38 @@
         <a href="/military"><button class="btn btn-outline-danger btn-lg">Military</button></a>
         <a href="/beauty"><button class="btn btn-outline-primary btn-lg">Beauty</button></a>
         <a href="/animals"><button class="btn btn-outline-dark btn-lg">Animals</button></a>
-        <a href="/relationships"><button class="btn btn-outline-primary btn-lg">Relationships</button></a>
+        <!-- <a href="/relationships"><button class="btn btn-outline-primary btn-lg">Relationships</button></a> -->
         <a href="/weather"><button class="btn btn-outline-info btn-lg">Weather</button></a>
-        <a href="/tech"><button class="btn btn-outline-success btn-lg">Tech</button></a>
+        <!-- <a href="/tech"><button class="btn btn-outline-success btn-lg">Tech</button></a> -->
+        <a href="/bitcoin"><button class="btn btn-outline-success btn-lg">Bitcoin</button></a>
+        <a href="/health"><button class="btn btn-outline-success btn-lg">Health</button></a>
 
       </div>
+
+
+<style>
+    aside {
+      width: 20%;
+      padding-left: 15px;
+      margin-left: 15px;
+      float: left;
+      font-style: italic;
+      background-color: rgb(245, 235, 235);
+    }
+    </style>
+
+
+
+    <aside>
+        <h2> News Sources:</h2>
+
+    {% for  source in source.sources%}
+           
+     <p><a id="block"href="{{source.url}}" target= _blank>{{source.name}}</a></p>
+              
+     {% endfor %} 
+    </aside>
+
 
       <div id="news">
       {% for article in article.articles %}

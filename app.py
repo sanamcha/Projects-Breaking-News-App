@@ -42,15 +42,25 @@ def page_not_found(e):
 @app.route('/')
 def index_page():
     """The home page"""
+
+    weather=get_weather()
     url =f'https://newsapi.org/v2/top-headlines?country=us&apiKey={API_SECRET_KEY}'
     
     response = requests.get(url).json()
     article = {
         'articles' : response["articles"]
     }
-    weather=get_weather()
+   
 
-    return render_template('home-page.html', article=article, weather=weather)
+    url2=f"https://newsapi.org/v2/top-headlines/sources?apiKey={API_SECRET_KEY}"
+
+    res = requests.get(url2).json()
+
+    source = {
+        'sources' : res["sources"]
+    }
+
+    return render_template('home-page.html', article=article, weather=weather, source=source)
 
 
 
@@ -186,7 +196,6 @@ def search():
 
 
 
-
 @app.route('/news')
 def login_news_page():
     """The home page"""
@@ -237,7 +246,7 @@ def register_user():
             return render_template('register.html', form=form)
         session['user_id'] = new_user.id
         flash('Welcome! Successfully Created Your Account!', "success")
-        return redirect('/news')
+        return redirect('/home-page.html')
 
     return render_template('register.html', form=form, weather=weather)
 
@@ -259,7 +268,7 @@ def login_user():
         if user:
             flash(f"Welcome Back, {user.username}!", "primary")
             session['user_id'] = user.id
-            return redirect('/news')
+            return redirect('/home-page.html')
         else:
             form.username.errors = ['Invalid username/password.']
 

@@ -9,7 +9,7 @@ app = Flask(__name__)
 connect_db(app)
 
 
-url_weather = 'http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=4cd07ce8d2eaa374c6b57b6cdabf4c0b'
+url_weather = "http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=4cd07ce8d2eaa374c6b57b6cdabf4c0b"
 
 def get_weather():
     
@@ -29,7 +29,7 @@ def get_weather():
 
 
 def weather_city(city):
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid=4cd07ce8d2eaa374c6b57b6cdabf4c0b'
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&units=imperial&appid={WEATHER_KEY}'
     res = requests.get(url).json()
     return res
 
