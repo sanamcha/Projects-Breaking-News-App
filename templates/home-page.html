@@ -26,26 +26,28 @@
 
 <style>
     aside {
-      width: 20%;
+      width: 350px;
       padding-left: 15px;
       margin-left: 15px;
       float: left;
       font-style: italic;
+      position:static;
       background-color: rgb(245, 235, 235);
     }
     </style>
 
+<aside>
+  <h2> News Sources:</h2>
+
+{% for  source in source.sources%}
+     
+<p><a id="block"href="{{source.url}}" target= _blank>{{source.name}}</a></p>
+        
+{% endfor %} 
+</aside>
 
 
-    <aside>
-        <h2> News Sources:</h2>
-
-    {% for  source in source.sources%}
-           
-     <p><a id="block"href="{{source.url}}" target= _blank>{{source.name}}</a></p>
-              
-     {% endfor %} 
-    </aside>
+    
 
 
       <div id="news">
@@ -55,18 +57,20 @@
       <h3 class="text-primary" data-news-id="{{article.source.id}}"><u>{{article.source.name}}</u></h3>  
       <h5>{{article.title}} </h5>
       
-      
-      <div ><a href="{{ article.url }}" target= _blank><img src = {{ article.urlToImage }}  width = "100%" height = "100%" ></a></div>
-      <h6>{{article.publishedAt}}</h6>
-      <p>{{article.description}}</p>
-      <p>{{article.content}}<a href="{{article.url}}" target=_blank><button class="btn btn-success">Read more...</button></a></p>
+      <div >
+        <a href="{{ article.url }}" target= _blank><img src = {{ article.urlToImage }}  width = "100%" height = "100%" ></a></div>
+        <h6>{{article.publishedAt}}</h6>
+        <p>{{article.description}}</p>
+        <p>{{article.content}}<a href="{{article.url}}" target=_blank><button class="btn btn-success">Read more...</button></a></p>
       
       </div>
       {% endfor %}
-   
+    </div>
+  
+     
     </div>
 
-    </div>
+    
 
       <hr>
       <br>
