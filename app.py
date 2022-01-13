@@ -246,7 +246,7 @@ def register_user():
             return render_template('register.html', form=form)
         session['user_id'] = new_user.id
         flash('Welcome! Successfully Created Your Account!', "success")
-        return redirect('/home-page.html')
+        return redirect('/')
 
     return render_template('register.html', form=form, weather=weather)
 
@@ -268,7 +268,7 @@ def login_user():
         if user:
             flash(f"Welcome Back, {user.username}!", "primary")
             session['user_id'] = user.id
-            return redirect('/home-page.html')
+            return redirect('/')
         else:
             form.username.errors = ['Invalid username/password.']
 
