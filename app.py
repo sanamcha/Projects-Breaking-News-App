@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, session, flash, jsonify, request, url_for
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, db, User, Comment, Post, datetime, City
+from models import connect_db, db, User, Comment, Post, datetime, City, News
 from forms import UserForm , PostForm, AddNewsForm, EditNewsForm, DeleteForm, CommentForm
 from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import Unauthorized
@@ -17,7 +17,7 @@ import os
 app = Flask(__name__)
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgres:///breaking_news") 
+app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgres:///breaking_news_app") 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -521,4 +521,65 @@ def delete_city(name):
     return redirect(url_for('list_weather'))
 
 
+# ###########################  news comment page ###############
 
+@app.route('/news-lists')
+def news_list():
+    """lists of news"""
+
+    news = News.query.all()
+    weather=get_weather()
+
+    # db.session.add(news)
+    db.session.commit()
+    return render_template('news-lists/news-lists.html', news=news, weather=weather )
+
+
+@app.route("/news-lists/<int:news_id>", methods=["GET", "POST"])
+def show_news_detail(news_id):
+
+    weather=get_weather()
+    news = News.query.get_or_404(news_id)
+    
+    comments = Comment.query.filter_by(news_id=news.id).all()
+
+    return render_template("/news-lists/show-comment-news.html", news_id=news.id, comments=comments, news=news, weather=weather)
+
+
+
+@app.route("/news-lists/<int:news_id>/comment", methods=["GET", "POST"])
+
+def comment_news(news_id):
+    weather=get_weather()
+    news = News.query.get_or_404(news_id)
+    comments = Comment.query.filter_by(news_id=news.id).all()
+    
+    
+    form = CommentForm()
+    if request.method == 'POST':
+
+        if form.validate_on_submit():
+            comment = Comment(text=form.text.data, news_id=news.id)
+            db.session.add(comment)
+            db.session.commit()
+            flash("Your comment has been added to the post", "success")
+            return redirect(url_for("show_news_detail", news_id=news.id))
+
+    return render_template("/news-lists/comment-news.html", form=form, news_id=news_id, comments=comments, weather=weather)
+
+
+@app.route("/news-lists/<int:comment_id>/delete", methods=["POST"])
+
+def delele_news_comment(comment_id):
+    """to delete comments.."""
+
+    
+
+    comment = Comment.query.get_or_404(comment_id)
+
+    db.session.delete(comment)
+    db.session.commit()
+
+    flash('Comment has deleted ','success')
+
+    return redirect("/news-lists")

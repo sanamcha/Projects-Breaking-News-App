@@ -1,0 +1,28 @@
+{% extends 'base.html'  %}
+
+
+{% block content %}
+
+
+
+
+<div class="row">
+        
+    {% for n in news %}
+    <div class="col-10">
+        <img src="{{n.image_url}}" width='100%', height='500px'>
+        <h3>{{n.author}}</h3>
+        <h4>{{n.title}}</h4>
+        <p>{{n.description}}</p>
+        <a href="/news-lists/{{n.id}}"><button class="btn btn-success">View Comment</button> </a>
+        <br>
+
+    </div>
+
+    <br><br><hr><br>
+
+    {%  endfor %}
+
+    <br>
+
+    {% endblock %}

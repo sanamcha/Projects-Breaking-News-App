@@ -93,6 +93,7 @@ class Comment(db.Model):
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     post_id = db.Column(db.Integer, db.ForeignKey('posts.id'))
+    news_id = db.Column(db.Integer, db.ForeignKey('news.id'))
     user = db.relationship('User', backref="comments")
     # post = db.relationship('Post', backref="comments")
     
@@ -118,3 +119,18 @@ class City(db.Model):
     name = db.Column(db.String(50), nullable = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     # user = db.relationship('User', backref="weathers")
+
+
+class News(db.Model):
+    """News list"""
+
+    __tablename__ = "news"
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    title = db.Column(db.Text, nullable=False)
+    author = db.Column(db.Text)
+    description = db.Column(db.Text, nullable=False)
+    image_url = db.Column(db.Text, nullable=False, 
+                    default = DEFAULT_IMAGE)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    comments = db.relationship('Comment', backref='news', cascade='all, delete')
