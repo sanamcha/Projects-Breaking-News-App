@@ -583,3 +583,4 @@ def delele_news_comment(comment_id):
     flash('Comment has deleted ','success')
 
     return redirect("/news-lists")
+
