@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS post_comment;
+DROP DATABASE IF EXISTS breaking_news_app;
 
-CREATE DATABASE post_comment;
+CREATE DATABASE breaking_news_app;
 
-\c post_comment;
+\c breaking_news_app;
 
 DROP TABLE IF EXISTS news;
 
