@@ -5,13 +5,56 @@
 
 <div class="row">
     <h1>List of popular News</h1>
+
+    <div class="col-10">
+        <img src="https://s.abcnews.com/images/International/WireAP_bde0a32b07a344b88aa0ad10811c7f24_16x9_992.jpg" width='100%', height='500px'>
+        <h3><b>Title:</b> No Ukraine breakthrough but NATO and Russia eye more talks</h3>
+        <h4><b>Author:</b> ABC News</h4>
+        <p><b>Description:</b>LORNE COOK Associated Press </p>
+        <a href="/news-lists/1"><button class="btn btn-success">View Comment</button> </a>
+        <br>
+
+    </div>
+    <br><hr>
+
+    <div class="col-10">
+        <img src="https://media.nbcboston.com/2022/01/GettyImages-1237641619.jpg?quality=85&strip=all&crop=0px%2C375px%2C4000px%2C2250px&resize=1200%2C675" width='100%', height='500px'>
+        <h3><b>Title:</b>This Early Symptom is One You Should Watch for With Omicron Infections Rising</h3>
+        <h4><b>Author:</b> - NBC10 Boston</h4>
+        <p><b>Description:</b> Staff and wire reports if you have been exposed to someone with COVID and are watching for symptoms what are some of the first signs you might be infected? With omicron cases rising</p>
+        <a href="/news-lists/2"><button class="btn btn-success">View Comment</button> </a>
+        <br>
+
+    </div>
+
+    <br><hr>
+    <div class="col-10">
+        <img src="https://cdn.vox-cdn.com/thumbor/IazbpIF_CRG5qYsHWbPhCBBl-bg=/0x5:1280x675/fit-in/1200x630/cdn.vox-cdn.com/uploads/chorus_asset/file/23163583/SHIELD_TV_Experience_9.0_1280x680.jpg" width='100%', height='500px'>
+        <h3><b>Title:</b>The Nvidia Shield is getting Android 11 and other upgrades</h3>
+        <h4><b>Author:</b> - The Verge,Chaim Gartenberg</h4>
+        <p><b>Description:</b>The Nvidia Shield set-top box keeps on trucking with its latest Shield Software Experience Upgrade 9.0, which adds Android 11 to the nearly seven-year-old hardware. It also adds a variety of other useful upgrades around Bluetooth and game streaming. </p>
+        <a href="/news-lists/3"><button class="btn btn-success">View Comment</button> </a>
+        <br>
+    </div>
         
+<br><hr>
+    <div class="col-10">
+        <img src="https://www.reuters.com/resizer/TNtHOcIwjtyj9v_w7RLkH4uLgh4=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/34VQYDBORRMELNKNPKSRM6HGTA.jpg" width='100%', height='500px'>
+        <h3><b>Title:</b>U.S. Senate Democrats unveil Russia sanctions bill to bolster Ukraine</h3>
+        <h4><b>Author:</b> - Reuters</h4>
+        <p><b>Description:</b>U.S. Senate Democrats on Wednesday unveiled a bill to impose sweeping sanctions on top Russian government and military officials, including President Vladimir Putin, and key banking institutions if Moscow engages in hostilities against Ukraine. </p>
+        <a href="/news-lists/4"><button class="btn btn-success">View Comment</button> </a>
+        <br>
+
+    </div>
+<br>
+
     {% for n in news %}
     <div class="col-10">
         <img src="{{n.image_url}}" width='100%', height='500px'>
-        <h3>{{n.author}}</h3>
-        <h4>{{n.title}}</h4>
-        <p>{{n.description}}</p>
+        <h3>Author: {{n.author}}</h3>
+        <h4>Title: {{n.title}}</h4>
+        <p>Description: {{n.description}}</p>
         <a href="/news-lists/{{n.id}}"><button class="btn btn-success">View Comment</button> </a>
         <br>
 
