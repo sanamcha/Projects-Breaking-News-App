@@ -6,7 +6,7 @@ url = f'https://newsapi.org/v2/top-headlines?country=us&apiKey={API_SECRET_KEY}'
 
 url_general= f'https://newsapi.org/v2/top-headlines?country=us&category=general&apiKey={API_SECRET_KEY}'
 
-url_sports= f'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey={API_SECRET_KEY}'
+url_sports= f'https://newsapi.org/v2/top-headlines?country=us&category=sport&apiKey={API_SECRET_KEY}'
 
 url_entertainment= f'https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey={API_SECRET_KEY}'
 
