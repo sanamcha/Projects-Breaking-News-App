@@ -3,12 +3,13 @@
 import requests
 from flask import Flask
 from models import connect_db, db, City
-from secrets import WEATHER_KEY
+# from secrets import WEATHER_KEY
 
 app = Flask(__name__)
 connect_db(app)
 
 
+WEATHER_KEY ="4cd07ce8d2eaa374c6b57b6cdabf4c0b"
 url_weather = "http://api.openweathermap.org/data/2.5/weather?q={}&units=imperial&appid=4cd07ce8d2eaa374c6b57b6cdabf4c0b"
 
 def get_weather():

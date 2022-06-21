@@ -6,7 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import Unauthorized
 import json
 import requests
-from secrets import API_SECRET_KEY
+# from secrets import API_SECRET_KEY
 
 from weathers import get_weather, url_weather, weather_city
 from news import  get_general_news, get_technology_news, get_health_news, get_business_news, get_entertainment_news, get_sports_news, get_science_news,get_bitcoin_news, get_jobs_news, get_travel_news, get_animals_news, get_military_news, get_fitness_news, get_pets_news, get_beauty_news, get_tech_news, get_relationships_news, get_stocks_news, get_weather_news
@@ -17,7 +17,7 @@ import os
 app = Flask(__name__)
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgres:///breaking_news_app") 
+app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgresql:///breaking_news_app") 
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -32,7 +32,7 @@ connect_db(app)
 db.create_all()
 
 
-
+API_SECRET_KEY ="92782db9a8a24a56a2aee9a018266277"
 @app.errorhandler(404)
 def page_not_found(e):
     """Show 404 NOT FOUND page."""

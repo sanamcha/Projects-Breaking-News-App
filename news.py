@@ -1,5 +1,6 @@
 import requests
-from secrets import API_SECRET_KEY
+# from secrets import API_SECRET_KEY
+API_SECRET_KEY ="92782db9a8a24a56a2aee9a018266277"
 
 
 url = f'https://newsapi.org/v2/top-headlines?country=us&apiKey={API_SECRET_KEY}'
