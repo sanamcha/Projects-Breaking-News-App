@@ -10,19 +10,20 @@ import requests
 
 from weathers import get_weather, url_weather, weather_city
 from news import  get_general_news, get_technology_news, get_health_news, get_business_news, get_entertainment_news, get_sports_news, get_science_news,get_bitcoin_news, get_jobs_news, get_travel_news, get_animals_news, get_military_news, get_fitness_news, get_pets_news, get_beauty_news, get_tech_news, get_relationships_news, get_stocks_news, get_weather_news
-import os
+# import os
 
 
 
 app = Flask(__name__)
 
 
-app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgresql:///breaking_news_app") 
-
+# app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgresql:///breaking_news_app") 
+app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql:///breaking_news_app"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','12345secretkey67890')
+app.config['SECRET_KEY'] = '12345secretkey67890'
+# app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','12345secretkey67890')
 
 # app.config['DEBUG'] = True
 
