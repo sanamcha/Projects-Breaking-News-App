@@ -6,6 +6,7 @@ from sqlalchemy.exc import IntegrityError
 from werkzeug.exceptions import Unauthorized
 import json
 import requests
+
 # from secrets import API_SECRET_KEY
 
 from weathers import get_weather, url_weather, weather_city
@@ -17,23 +18,40 @@ from news import  get_general_news, get_technology_news, get_health_news, get_bu
 app = Flask(__name__)
 
 
+
+
 # app.config["SQLALCHEMY_DATABASE_URI"] =os.environ.get('DATABASE_URL',"postgresql:///breaking_news_app") 
-app.config["SQLALCHEMY_DATABASE_URI"] ="postgresql:///breaking_news_app"
+
+app.config['SQLALCHEMY_DATABASE_URI'] ='postgresql:///breaking_news_app'
+app.config['SQLALCHEMY_BINDS'] = False
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
+
+app.config['SQLALCHEMY_ECHO'] = False
 app.config['SECRET_KEY'] = '12345secretkey67890'
 # app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','12345secretkey67890')
 
-# app.config['DEBUG'] = True
+app.config['DEBUG'] = True
 
 
-# toolbar = DebugToolbarExtension(app)
+
+toolbar = DebugToolbarExtension(app)
+
+
+
 connect_db(app)
+
 db.create_all()
+
+db.init_app(app)
+
 
 
 API_SECRET_KEY ="92782db9a8a24a56a2aee9a018266277"
+
+
+
 @app.errorhandler(404)
 def page_not_found(e):
     """Show 404 NOT FOUND page."""
@@ -465,7 +483,7 @@ def list_weather():
 
     for city in cities:
         res =weather_city(city.name)
-        print(res)
+        # print(res)
         # import pdb
         # pdb.set_trace()
 

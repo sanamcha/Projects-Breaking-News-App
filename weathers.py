@@ -17,7 +17,7 @@ def get_weather():
     city='San Francisco'
     res = requests.get(url_weather.format(city)).json()
     
-    print (res)
+    # print (res)
     weather_data = {
         'city':city,
         'temperature':res['main']['temp'],
